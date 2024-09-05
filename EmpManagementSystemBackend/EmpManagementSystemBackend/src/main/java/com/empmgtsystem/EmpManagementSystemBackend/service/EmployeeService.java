@@ -6,7 +6,7 @@ import com.empmgtsystem.EmpManagementSystemBackend.dto.EmployeeDto;
 
 import java.util.List;
 
-public interface EmployeeSerice {
+public interface EmployeeService {
 
     void createEmployee(EmployeeDto employeeDto) throws Exception;
 

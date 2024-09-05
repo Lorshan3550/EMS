@@ -1,6 +1,7 @@
 package com.empmgtsystem.EmpManagementSystemBackend.dto;
 
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,6 @@ import lombok.Setter;
 public class DepartmentDto {
     private long deptId;
     private String deptName;
+
     private String Location;
 }

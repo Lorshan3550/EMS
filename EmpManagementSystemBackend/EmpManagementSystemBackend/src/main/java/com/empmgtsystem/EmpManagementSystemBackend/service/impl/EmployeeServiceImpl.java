@@ -9,7 +9,7 @@ import com.empmgtsystem.EmpManagementSystemBackend.exception.ResourceNotFoundExc
 import com.empmgtsystem.EmpManagementSystemBackend.mapper.EmployeeMapper;
 import com.empmgtsystem.EmpManagementSystemBackend.repository.DepartmentRepository;
 import com.empmgtsystem.EmpManagementSystemBackend.repository.EmployeeRepository;
-import com.empmgtsystem.EmpManagementSystemBackend.service.EmployeeSerice;
+import com.empmgtsystem.EmpManagementSystemBackend.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class EmployeeServiceImpl implements EmployeeSerice {
+public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
     private DepartmentRepository departmentRepository;
