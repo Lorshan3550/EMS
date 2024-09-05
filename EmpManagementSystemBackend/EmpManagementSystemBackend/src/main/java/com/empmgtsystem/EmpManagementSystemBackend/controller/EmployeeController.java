@@ -7,10 +7,8 @@ import com.empmgtsystem.EmpManagementSystemBackend.dto.EmployeeDto;
 import com.empmgtsystem.EmpManagementSystemBackend.response.Response;
 import com.empmgtsystem.EmpManagementSystemBackend.response.SuccessResponse;
 import com.empmgtsystem.EmpManagementSystemBackend.response.SuccessResponseData;
-import com.empmgtsystem.EmpManagementSystemBackend.service.EmployeeSerice;
+import com.empmgtsystem.EmpManagementSystemBackend.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +22,12 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173/")
 public class EmployeeController {
 
-    private EmployeeSerice employeeSerice;
+    private EmployeeService employeeService;
 
     // REST API - Get all Employee
     @GetMapping
     public ResponseEntity<Response> getAllEmployee(){
-        List<EmployeeDto> allEmployees = employeeSerice.getAllEmployees();
+        List<EmployeeDto> allEmployees = employeeService.getAllEmployees();
         Response  successResponseData = new SuccessResponseData<>(
                 "Employees fetched successfully",
                 true,
@@ -43,7 +41,7 @@ public class EmployeeController {
     // REST API - create employee
     @PostMapping
     public ResponseEntity<Response> createEmployee(@RequestBody EmployeeDto employeeDto) throws Exception {
-        employeeSerice.createEmployee(employeeDto);
+        employeeService.createEmployee(employeeDto);
         Response successResponse = new SuccessResponse(
                 "Employee Created Successfully",
                 true,
@@ -55,7 +53,7 @@ public class EmployeeController {
     //REST API - GET employee by Id
     @GetMapping("{id}")
     public ResponseEntity<Response> getEmployeeById (@PathVariable("id") String empId){
-        EmployeeDto employeeDto = employeeSerice.getEmployeeById(empId);
+        EmployeeDto employeeDto = employeeService.getEmployeeById(empId);
         Response successResponseData = new SuccessResponseData<EmployeeDto>(
                 "Employee fetched successfully",
                 true,
@@ -68,7 +66,7 @@ public class EmployeeController {
     // REST API - Update Employee by empId
     @PutMapping("{id}")
     public ResponseEntity<Response> updateEmployeeById (@PathVariable("id") String empId, @RequestBody EmployeeDto employeeDto){
-        employeeSerice.updateEmployee(empId,employeeDto);
+        employeeService.updateEmployee(empId,employeeDto);
         Response successResponse = new SuccessResponse(
                 "Employee Updated Successfully",
                 true,
@@ -80,7 +78,7 @@ public class EmployeeController {
     //REST API - Delete employee by empId
     @DeleteMapping("{id}")
     public ResponseEntity<Response> deleteEmployeeById(@PathVariable("id") String empId){
-        employeeSerice.deleteEmployee(empId);
+        employeeService.deleteEmployee(empId);
         Response successResponse = new SuccessResponse(
                 "Employee Deleted Successfully",
                 true,
